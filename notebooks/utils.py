@@ -280,3 +280,44 @@ def box(text):
 def addContent(old_html, raw_html):
     old_html += raw_html
     return old_html
+
+def guess_human(model, sequences, idx_word, training_length=50, new_words=50):
+    """Produce 2 RNN sequences and play game to compare to actaul.
+       Diversity is randomly set between 0.5 and 1.25"""
+    
+    diversity = np.random.uniform(0.5, 1.25)
+    sequence, gen_list, actual = generate_output(model, sequences, idx_word, training_length, 
+                                                 diversity=diversity, return_output=True, n_gen = 2)
+    gen_0, gen_1 = gen_list
+    
+    output = {'sequence': remove_spaces(' '.join(sequence)),
+              'c0': remove_spaces(' '.join(gen_0)),
+              'c1': remove_spaces(' '.join(gen_1)),
+              'h': remove_spaces(' '.join(actual))}
+    
+    print(f"Seed Sequence: {output['sequence']}\n")
+    
+    choices = ['h', 'c0', 'c1']
+          
+    selected = []
+    i = 0
+    while len(selected) < 3:
+        choice = random.choice(choices)
+        selected.append(choice)
+        print('\n')
+        print(f'Option {i + 1} {output[choice]}')
+        choices.remove(selected[-1])
+        i += 1
+    
+    print('\n')
+    guess = int(input('Enter option you think is human (1-3): ')) - 1
+    print('\n')
+    
+    if guess == np.where(np.array(selected) == 'h')[0][0]:
+        print('Correct')
+        print('Correct Ordering', selected)
+    else:
+        print('Incorrect')
+        print('Correct Ordering', selected)
+          
+    print('Diversity', round(diversity, 2))
