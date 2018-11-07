@@ -70,7 +70,6 @@ def find_closest(query, embedding_matrix, word_idx, idx_word, n = 10):
             closest = [idx_word[i] for i in idxs]
             
     print(f'Query: {query}\n')
-    max_len = max([len(i) for i in closest])
     # Print out the word and cosine distances
     for word, dist in zip(closest, sorted_dists):
         print(f'Word: {word:15} Cosine Similarity: {round(dist, 4)}')
@@ -324,7 +323,7 @@ def seed_sequence(model, s, word_idx, idx_word,
     gen = []
     s = start[:]
     # Generate output
-    for i in range(num_words):
+    for _ in range(num_words):
         # Conver to arry
         x = np.array([word_idx.get(word, 0) for word in s]).reshape((1, -1))
 

@@ -1,0 +1,55 @@
+.wp-post-navigation {
+	clear: both;
+	margin: 0 0 20px;
+	overflow: hidden;
+}
+.wp-post-navigation div{
+	display: block;
+	width: 245px;
+	position: relative;
+	font-size: 14px;
+	color: #999;
+	min-height: 26px;
+}
+.wp-post-navigation-pre{
+	float: left;
+	line-height: 16px;
+	padding-left: 40px;
+}
+.wp-post-navigation-next{
+	float: right;
+	text-align: right;
+	line-height: 16px;
+	padding-right: 40px;
+}
+.wp-post-navigation > div > a > span{
+	font-size: 26px;
+}
+.wp-post-navigation div a:after {
+	position: absolute;
+	color: #ccc;
+	font-size: 56px;
+	margin-top: -11px;
+	height: 22px;
+	line-height: 22px;
+	top: 34%;
+}
+.wp-post-navigation-pre a:after {
+	content: '«';
+	left: 0;
+}
+.wp-post-navigation-next a:after {
+	content: '»';
+	right: 0;
+}
+.wp-post-navigation-pre-1{
+	float: left;
+	line-height: 16px;
+	padding-left: 5px;
+}
+.wp-post-navigation-next-1{
+	float: right;
+	text-align: right;
+	line-height: 16px;
+	padding-right: 5px;
+}
