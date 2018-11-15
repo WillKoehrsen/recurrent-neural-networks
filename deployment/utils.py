@@ -149,10 +149,10 @@ def header(text, color='black', gen_text=None):
     """Create an HTML header"""
 
     if gen_text:
-        raw_html = f'<h1 style="color: {color};"><p><center>' + str(
+        raw_html = f'<h1 style="color: {color};font-size:60px"><p><center>' + str(
             text) + '<span style="color: red">' + str(gen_text) + '</center></p></h1>'
     else:
-        raw_html = f'<h1 style="color: {color};"><center>' + str(
+        raw_html = f'<h1 style="color: {color};font-size:60px"><center>' + str(
             text) + '</center></h1>'
     return raw_html
 
@@ -161,11 +161,11 @@ def box(text, gen_text=None):
     """Create an HTML box of text"""
 
     if gen_text:
-        raw_html = '<div style="border:1px inset black;padding:1em;font-size: 20px;"> <p>' + str(
+        raw_html = '<div style="border:1px inset black;padding:1em;font-size:32px;margin:auto;max-width:60%"> <p>' + str(
             text) + '<span style="color: red">' + str(gen_text) + '</p></div>'
 
     else:
-        raw_html = '<div style="border:1px inset black;padding:1em;font-size: 20px;">' + str(
+        raw_html = '<div style="border:1px inset black;padding:1em;font-size: 32px;">' + str(
             text) + '</div>'
     return raw_html
 

@@ -5,34 +5,6 @@ body {
     color: #444;
   }
    
-  /*
-   * Create dark grey header with a white logo
-   */
-    
-  header {
-    background-color: #2B2B2B;
-    height: 35px;
-    width: 100%;
-    opacity: .9;
-    margin-bottom: 10px;
-  }
-   
-  header h1.logo {
-    margin: 0;
-    font-size: 1.7em;
-    color: #fff;
-    text-transform: uppercase;
-    float: left;
-  }
-   
-  header h1.logo:hover {
-    color: #fff;
-    text-decoration: none;
-  }
-   
-  /*
-   * Center the body content
-   */
     
   .container {
     width: 940px;
@@ -97,6 +69,7 @@ form textarea#message {
 }
  
 form input#submit {
+  margin: 4px;
   display: block;
   -webkit-border-radius: 3px; 
      -moz-border-radius: 3px;

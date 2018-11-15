@@ -1,31 +1,30 @@
 {% extends "layout.html" %}
- 
+
 {% block content %}
-  <h3>Recurrent Neural Networks</h3>
 
-  {% for message in form.seed.errors %}
-    <div class="flash">{{ message }}</div>
-  {% endfor %}
- 
-  {% for message in form.diversity.errors %}
-    <div class="flash">{{ message }}</div>
-  {% endfor %}
- 
-  {% for message in form.words.errors %}
-    <div class="flash">{{ message }}</div>
-  {% endfor %}
-  
-  <form method=post>
+{% for message in form.seed.errors %}
+<div class="flash">{{ message }}</div>
+{% endfor %}
 
-    {{ form.seed.label }}
-    {{ form.seed }}
- 
-    {{ form.diversity.label }}
-    {{ form.diversity }}
+{% for message in form.diversity.errors %}
+<div class="flash">{{ message }}</div>
+{% endfor %}
 
-    {{ form.words.label }}
-    {{ form.words }} 
- 
-    {{ form.submit }}
-  </form>
+{% for message in form.words.errors %}
+<div class="flash">{{ message }}</div>
+{% endfor %}
+
+<form method=post>
+
+  {{ form.seed.label }}
+  {{ form.seed }}
+
+  {{ form.diversity.label }}
+  {{ form.diversity }}
+
+  {{ form.words.label }}
+  {{ form.words }}
+
+  {{ form.submit }}
+</form>
 {% endblock %}
