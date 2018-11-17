@@ -142,4 +142,6 @@ form input#submit:hover{
     background-color: #FBB0B0;
     padding: 10px;
     width: 400px;
+    display: table;
+    margin: auto;
   }
