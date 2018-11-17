@@ -7,8 +7,27 @@ body {
    
     
   .container {
+    text-align: center;
+    background-color: papayawhip;
     width: 940px;
     margin: 0 auto;
+    border: 1px double black;
+    border-width: 4px;
+    margin-top: 100px;
+  }
+
+  .container::before {
+    background-image: url('/static/images/script_background.png');
+    background-size: cover;
+content: "";
+display: block;
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: -2;
+opacity: 0.4;
   }
    
   div.jumbo {
@@ -19,6 +38,19 @@ body {
             border-radius: 6px;
   }
    
+
+  h1 { 
+    font-family: none;
+    color: darkslategray;
+    display: block;
+    font-size: 48px;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
   h2 {
     font-size: 3em;
     margin-top: 40px;
@@ -36,23 +68,25 @@ body {
   }
 
 form label {
-  font-size: 1.2em;
+  font-family: initial;
+  color: darkblue;
+  font-size: 26px;
   font-weight: bold;
   display: block;
   padding: 10px 0;
 }
  
-form input#seed,
-form input#diversity,
-form input#words {
+form input#seed, form input#diversity, form input#words {
+  height: 50px;
   width: 400px;
   background-color: #fafafa;
   -webkit-border-radius: 3px;
-     -moz-border-radius: 3px;
-          border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
   border: 1px solid #cccccc;
   padding: 5px;
-  font-size: 1.1em;
+  font-size: 24px;
+  margin: 12px;
 }
  
 form textarea#message {
@@ -69,14 +103,17 @@ form textarea#message {
 }
  
 form input#submit {
-  margin: 4px;
-  display: block;
+  height:80px;
+  width:100px;
+  margin: auto;
+  display: -webkit-box;
   -webkit-border-radius: 3px; 
      -moz-border-radius: 3px;
           border-radius: 3px;
   border:1px solid #d8d8d8;
   padding: 10px; 
   font-weight:bold; 
+  font-size:22px;
   text-align: center; 
   color: #000000; 
   background-color: #f4f4f4;
