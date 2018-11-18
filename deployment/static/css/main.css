@@ -19,15 +19,15 @@ body {
   .container::before {
     background-image: url('/static/images/script_background.png');
     background-size: cover;
-content: "";
-display: block;
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-z-index: -2;
-opacity: 0.4;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    opacity: 0.4;
   }
    
   div.jumbo {
