@@ -1,9 +1,10 @@
-# Home page
-@app.route("/", methods=['GET', 'POST'])
-def home():
-    """Home page of app with form"""
-    # Create form
-    form = ReusableForm(request.form)
+from flask import Flask
+app = Flask(__name__)
 
-    # Send template information to index.html
-    return render_template('index.html', form=form)
+
+@app.route("/")
+def hello():
+    return "<h1>Not Much Going On Here</h1>"
+
+
+app.run(host='0.0.0.0', port=60000)
