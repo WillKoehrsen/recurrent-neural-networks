@@ -1,4 +1,4 @@
-from utils import generate_output, generate_from_seed
+from utils import generate_random_start, generate_from_seed
 from keras.models import load_model
 import tensorflow as tf
 from flask import Flask, render_template, request
@@ -14,7 +14,7 @@ class ReusableForm(Form):
     """User entry form for entering specifics for generation"""
     # Starting seed
     seed = TextField("Enter a seed string or 'random':", validators=[
-                     validators.InputRequired(message='A seed string is required')])
+                     validators.InputRequired()])
     # Diversity of predictions
     diversity = DecimalField('Enter diversity:', default=0.8,
                              validators=[validators.InputRequired(),
@@ -54,10 +54,10 @@ def home():
         if form.validate():
             # Generate a random sequence
             if seed == 'random':
-                return generate_output(model=model, graph=graph, new_words=words, diversity=diversity)
+                return render_template('random.html', input=generate_random_start(model=model, graph=graph, new_words=words, diversity=diversity))
             # Generate starting from a seed sequence
             else:
-                return generate_from_seed(model=model, graph=graph, seed=seed, new_words=words, diversity=diversity)
+                return render_template('seeded.html', input=generate_from_seed(model=model, graph=graph, seed=seed, new_words=words, diversity=diversity))
     # Send template information to index.html
     return render_template('index.html', form=form)
 

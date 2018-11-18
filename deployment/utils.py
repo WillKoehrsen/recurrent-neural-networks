@@ -4,11 +4,11 @@ import json
 import re
 
 
-def generate_output(model, graph, seed_length=50,
-                    new_words=50,
-                    diversity=1,
-                    return_output=False,
-                    n_gen=1):
+def generate_random_start(model, graph, seed_length=50,
+                          new_words=50,
+                          diversity=1,
+                          return_output=False,
+                          n_gen=1):
     """Generate `new_words` words of output from a trained model and format into HTML."""
 
     word_idx = json.load(open('../data/word-index.json'))
@@ -63,14 +63,14 @@ def generate_output(model, graph, seed_length=50,
         n = []
 
         for i in generated:
-            n.append(idx_word.get(i, '< --- >'))
+            n.append(idx_word.get(i, '==='))
 
         gen_list.append(n)
 
     a = []
 
     for i in actual:
-        a.append(idx_word.get(i, '< --- >'))
+        a.append(idx_word.get(i, '==='))
 
     a = a[seed_length:]
 
@@ -94,7 +94,7 @@ def generate_output(model, graph, seed_length=50,
     a_html = addContent(a_html, header('Actual', color='darkgreen'))
     a_html = addContent(a_html, box(remove_spaces(' '.join(a))))
 
-    return f'<div style="max-width:80%;margin:auto"><div>{seed_html}</div><div>{gen_html}</div><div>{a_html}</div></div>'
+    return f'<div>{seed_html}</div><div>{gen_html}</div><div>{a_html}</div>'
 
 
 def generate_from_seed(model, graph, seed,
@@ -102,7 +102,7 @@ def generate_from_seed(model, graph, seed,
     """Generate output from a sequence"""
 
     # Mapping of words to integers
-    word_idx = json.load(open('../data/word-index.json'))
+    word_idx = json.load(open('../data/word-index.json')) 
     idx_word = {idx: word for word, idx in word_idx.items()}
 
     # Original formated text
@@ -139,15 +139,15 @@ def generate_from_seed(model, graph, seed,
     html = addContent(html, header(
         'Input Seed ', color='black', gen_text='Network Output'))
     html = addContent(html, box(start, gen))
-    return html
+    return f'<div>{html}</div>'
 
 
 def header(text, color='black', gen_text=None):
     """Create an HTML header"""
 
     if gen_text:
-        raw_html = f'<h1 style="margin-top:12px;color: {color};font-size:54px"><p><center>' + str(
-            text) + '<span style="color: red">' + str(gen_text) + '</center></p></h1>'
+        raw_html = f'<h1 style="margin-top:16px;color: {color};font-size:54px"><center>' + str(
+            text) + '<span style="color: red">' + str(gen_text) + '</center></h1>'
     else:
         raw_html = f'<h1 style="margin-top:12px;color: {color};font-size:54px"><center>' + str(
             text) + '</center></h1>'
@@ -158,11 +158,11 @@ def box(text, gen_text=None):
     """Create an HTML box of text"""
 
     if gen_text:
-        raw_html = '<div style="border:1px inset black;padding:1em;font-size:28px;margin:auto;max-width:60%"> <p>' + str(
-            text) + '<span style="color: red">' + str(gen_text) + '</p></div>'
+        raw_html = '<div style="padding:8px;font-size:28px;margin-top:28px;margin-bottom:14px;">' + str(
+            text) + '<span style="color: red">' + str(gen_text) + '</div>'
 
     else:
-        raw_html = '<div style="border:1px inset black;padding:1em;font-size: 28px;">' + str(
+        raw_html = '<div style="border-bottom:1px inset black;border-top:1px inset black;padding:8px;font-size: 28px;">' + str(
             text) + '</div>'
     return raw_html
 
