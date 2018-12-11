@@ -1,0 +1,8 @@
+version: '3.3'
+services:
+  flask:
+    image: rnn-flask
+    build: .
+    command: /opt/conda/envs/rnn-flask/bin/python run_keras_server.py
+    ports:
+    - "50000:80"
